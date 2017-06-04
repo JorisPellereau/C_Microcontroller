@@ -85,11 +85,8 @@ void main(void) {
      TWCR=0x00;
 
      while (1) {                                          
-          if(mod == '0') PORTA = 0x00;
-          else if (mod == '1') mpp_exc1(1);
-          else if (mod == '2') mpp_exc1(2);
-          else if (mod == '3') mpp_exc2(1);
-          else if (mod == '4') mpp_exc2(2);
+          if(mod == 0) mpp_exc1(PORTA , 1);
+          else if (mod ==1) mpp_exc1(PORTA , 2);
           else;                               
      }
 }
