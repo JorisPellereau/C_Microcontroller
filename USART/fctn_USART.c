@@ -1,8 +1,4 @@
 #include <mega16.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <delay.h>
-#include <math.h>
 #include "fctn_USART.h"
 
 //-- Atmega16 --
@@ -18,7 +14,7 @@
 #define rx_it 1                         //-- 0 ou 1
 #define tx_it 0                         //-- 0 ou 1
 #define udr_it 0                        //-- 0 ou 1
-#define parity 1                        //-- 0 : disabled / 1 = even / 2 : odd
+#define parity 0                        //-- 0 : disabled / 1 = even / 2 : odd
 #define mode_sel 'a'                    //-- 'a' : Asynch / 's' : synch
 #define stop_bits 1                     //-- 1 ou 2
 #define polarity 0                      //-- 0 ou 1
