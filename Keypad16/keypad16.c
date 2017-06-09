@@ -1,5 +1,5 @@
 #include <mega16.h>
-
+#include <delay.h>
 //-- Fonction pour un KeyPad 16 touches
 /*
      1 - 2 - 3 - A = ROW1
@@ -31,65 +31,64 @@ unsigned char lecture_keypad() {
      init_port = 0x10;
      PORTA = init_port;
      i = 0;
-     while(i < 4) {
+     while(i < 5) {
           PORTA = PORTA >> 1; 
-          read_port = PINA;       // Lecture du PORTA
-          i++;
+          read_port = PINA;       // Lecture du PORTA          
           switch(read_port) {
                case 0x88:     key = '1';
-                              i = 4;    // Pour sortir de la boucle car une touche a été détectée
+                              i = 10;    // Pour sortir de la boucle car une touche a été détectée
                               break;
                case 0x48:     key = '2';
-                              i = 4;
+                              i = 10;
                               break;
                case 0x28:     key = '3';
-                              i = 4;
+                              i = 10;
                               break;
                case 0x18:     key = 'A';
-                              i = 4;
+                              i = 10;
                               break;
                case 0x84:     key = '4';
-                              i = 4;
+                              i = 10;
                               break;
                case 0x44:     key = '5';
-                              i = 4;
+                              i = 10;
                               break;
                case 0x24:     key = '6';
-                              i = 4;
+                              i = 10;
                               break;
                case 0x14:     key = 'B';
-                              i = 4;
+                              i = 10;
                               break;
                case 0x82:     key = '7';
-                              i = 4;
+                              i = 10;
                               break;
                case 0x42:     key = '8';
-                              i = 4;
+                              i = 10;
                               break;
                case 0x22:     key = '9';
-                              i = 4;
+                              i = 10;
                               break;
                case 0x12:     key = 'C';
-                              i = 4;
+                              i = 10;
                               break;
                case 0x81:     key = '*';
-                              i = 4;
+                              i = 10;
                               break;
                case 0x41:     key = '0';
-                              i = 4;
+                              i = 10;
                               break;
                case 0x21:     key = '#';
-                              i = 4;
+                              i = 10;
                               break;
                case 0x11:     key = 'D';
-                              i = 4;
+                              i = 10;
                               break;
                default:       key = 'X';
                               break;                               
           }
-     
-     }
-     while((PINA & 0xF0 == 0x80) || (PINA & 0xF0 == 0x40) || (PINA & 0xF0 == 0x20) || (PINA & 0xF0 == 0x10) );     // Attente relachement de la touche
+          i++;     
+     }     
      PORTA = 0x00;
+     delay_ms(20);      // Pour attente si appui long sur une touche
      return key;
 }
